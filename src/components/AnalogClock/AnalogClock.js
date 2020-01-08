@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import './Clock.scss';
+import './AnalogClock.scss';
 
-const Clock = () => {
+const DEFAULT_BACKGROUND = 'react.svg';
+
+const AnalogClock = (props) => {
   const refDate = new Date();
   const [ hours, setHours ] = useState(refDate.getHours());
   const [ minutes, setMinutes ] = useState(refDate.getMinutes());
   const [ seconds, setSeconds ] = useState(refDate.getSeconds());
+
+  const bg = props.background ? props.background : DEFAULT_BACKGROUND;
+
 
   const tick = () => {
     const newRefDate = new Date();
@@ -35,7 +40,7 @@ const Clock = () => {
   }
 
   return (
-    <div className="clock">
+    <div className="clock" style={{ backgroundImage: `url(${bg})` }}>
       <span className="clock__hours" style={ getHandStyle(hours, true) }/>
       <span className="clock__minutes" style={ getHandStyle(minutes) }/>
       <span className="clock__seconds" style={ getHandStyle(seconds) }/>
@@ -43,4 +48,4 @@ const Clock = () => {
   )
 }
 
-export default Clock;
+export default AnalogClock;

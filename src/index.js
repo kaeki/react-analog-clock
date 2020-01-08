@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
-import Clock from './components/Clock';
+import AnalogClock from './components/AnalogClock/AnalogClock';
 
 const App = () => {
   return (
     <div className="wrapper">
       <h1>Cool analog clock</h1>
-      <Clock/>
+      <AnalogClock />
     </div>
   )
 }
