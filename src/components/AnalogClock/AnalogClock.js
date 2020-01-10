@@ -39,7 +39,7 @@ const AnalogClock = (props) => {
   }
 
   return (
-    <div className="clock" style={{ backgroundImage: `url(${background})` }}>
+    <div id={props.id} className="clock" style={{ backgroundImage: `url(${background})` }}>
       <span className="clock__hours" style={ getHandStyle(hours, true) }/>
       <span className="clock__minutes" style={ getHandStyle(minutes) }/>
       <span className="clock__seconds" style={ getHandStyle(seconds) }/>
