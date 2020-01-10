@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import AnalogClock from './AnalogClock/AnalogClock';
+import ClockListItem from './ClockListItem/ClockListItem';
 
 const initialClock = {
   id: Date.now(),
@@ -28,11 +28,7 @@ const App = () => {
   };
 
   const clocksList = clocks.map(clock => (
-    <div key={clock.id}>
-      <button onClick={e => deleteClock(clock.id)}>Delete</button>
-      <AnalogClock {...clock}/>
-      <label htmlFor={clock.id}>{clock.city}</label>
-    </div>
+    <ClockListItem key={clock.id} clock={clock} onDelete={deleteClock} />
   ));
 
   return (
