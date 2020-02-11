@@ -1,6 +1,26 @@
+html, body {
+  margin: 0;
+  padding: 0;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  min-height: 100vh;
+  background-color: #dadada;
+}
+
 .wrapper {
   text-align: center;
   font-family: monospace;
+}
+
+.background {
+  &--blue {
+    background-color: #9cd9eb;
+  }
 }
 
 .visually-hidden {

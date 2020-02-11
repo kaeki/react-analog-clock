@@ -9,8 +9,8 @@ const ClockListItem = ({clock, onDelete}) => {
       const splitted = clock.timezone.split('/').reverse();
 
       return (
-        splitted.map(item => (
-          <span>{item.replace('_', ' ')}</span>
+        splitted.map((item, index) => (
+          <span key={`${clock.id}_${item}`}>{item.replace('_', ' ')}</span>
         ))
       );
     }

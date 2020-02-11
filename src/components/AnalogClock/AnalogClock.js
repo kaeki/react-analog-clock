@@ -49,7 +49,9 @@ const AnalogClock = (props) => {
     <div id={props.id} aria-label={label} className="analog-clock" style={{ backgroundImage: `url(${background})` }}>
       <span className="analog-clock__hours" style={ getHandStyle(hours, true) }/>
       <span className="analog-clock__minutes" style={ getHandStyle(minutes) }/>
-      <span className="analog-clock__seconds" style={ getHandStyle(seconds) }/>
+      { props.showSeconds &&
+        <span className="analog-clock__seconds" style={ getHandStyle(seconds) }/>
+      }
     </div>
   )
 }
