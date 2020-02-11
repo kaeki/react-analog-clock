@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { timezones } from '../../utils';
 
-const AddClock = ({ onAddClock }) => {
+const AddClock = ({ onAddClock, describedBy }) => {
   const [ newClock, setNewClock ] = useState();
 
   const emitNewClock = (e) => {
@@ -11,7 +11,7 @@ const AddClock = ({ onAddClock }) => {
   }
 
   return (
-    <form onSubmit={emitNewClock}>
+    <form onSubmit={emitNewClock} aria-describedby={describedBy}>
       <select value={newClock} onChange={e => setNewClock(e.target.value)} required>
         <option value="">Select a city</option>
         { 

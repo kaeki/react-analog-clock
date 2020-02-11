@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import './App.scss';
 import AddClock from './AddClock/AddClock';
 import ClockList from './ClockList/ClockList';
 
@@ -29,10 +30,11 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <div>
-        <h1>Clocks clocks clocks! Clocks for everyone!</h1>
-        <AddClock onAddClock={addClock} />
-      </div>
+      <header className="background--blue">
+        <h1>World Clocks</h1>
+        <p id="page-description">Pick a city / timezone from list below and watch how the time flies around world!</p>
+        <AddClock onAddClock={addClock} describedBy="page-description" />
+      </header>
       <ClockList items={clocks} onDelete={deleteClock} />
     </div>
   )

@@ -1,17 +1,28 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import './ClockList.scss';
 import ClockListItem from './ClockListItem';
 
 const ClockList = ({items, onDelete}) => {
-
-  const renderList = items.map(clock => (
-    <ClockListItem key={clock.id} className="clock-list-item" clock={clock} onDelete={onDelete} />
-  ));
+  const spring = {
+    type: "spring",
+    damping: 20,
+    stiffness: 300
+  };
 
   return (
     <ul className="clock-list">
-      {renderList}
+      {items.map(clock => (
+        <motion.li
+          key={clock.id}
+          layoutTransition={spring}>
+          <ClockListItem
+            className="clock-list-item"
+            clock={clock}
+            onDelete={onDelete} />
+        </motion.li>
+      ))}
     </ul>
   )
 };
