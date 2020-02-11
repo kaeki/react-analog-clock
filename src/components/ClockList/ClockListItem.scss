@@ -1,9 +1,20 @@
 .clock-list-item {
   position: relative;
   padding: 1rem 2rem;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.2),
+    0 4px 12px rgba(0,0,0,.1);
+  border-radius: 1rem;
+  margin: .5rem;
+  transition: all .2s;
 
   &:hover,
   &:focus {
+    box-shadow:
+      0 4px 12px rgba(0,0,0,.2),
+      0 8px 18px rgba(0,0,0,.1);
+    transform: translateY(-5px);
+
     .delete {
       opacity: 1;
     }
@@ -15,7 +26,17 @@
     right: 1px;
     z-index: 1;
     opacity: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     transition: .1s ease-in-out;
+    border: none;
+    background-color: none;
+    cursor: pointer;
 
     &:focus {
       opacity: 1;
@@ -26,5 +47,17 @@
     display: block;
     font-size: 1.2rem;
     margin-top: 1rem;
+
+    span {
+      display: block;
+
+      &:first-child {
+        font-weight: bold;
+      }
+
+      &:not(:first-child) {
+        font-size: 1rem;
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import AddClock from './AddClock/AddClock';
 import ClockList from './ClockList/ClockList';
 
 const initialClock = {
@@ -11,14 +12,13 @@ const initialClock = {
 const App = () => {
   const [ clocks, setClocks ] = useState([initialClock]);
 
-  const addClock = () => {
-    const newClock = {
+  const addClock = (timezone) => {
+    const clockToAdd = {
       id: Date.now(),
-      timezone: null,
-      city: 'New clock'
-    }
+      timezone: timezone
+    };
 
-    setClocks([...clocks, newClock]);
+    setClocks([...clocks, clockToAdd]);
   };
 
   const deleteClock = (id) => {
@@ -31,7 +31,7 @@ const App = () => {
     <div className="wrapper">
       <div>
         <h1>Clocks clocks clocks! Clocks for everyone!</h1>
-        <button onClick={e => addClock()}>Add</button>
+        <AddClock onAddClock={addClock} />
       </div>
       <ClockList items={clocks} onDelete={deleteClock} />
     </div>

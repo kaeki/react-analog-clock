@@ -5,14 +5,14 @@ import ClockListItem from './ClockListItem';
 
 const ClockList = ({items, onDelete}) => {
 
-  const renderedList = items.map(clock => (
+  const renderList = items.map(clock => (
     <ClockListItem key={clock.id} className="clock-list-item" clock={clock} onDelete={onDelete} />
   ));
 
   return (
-    <div className="clock-list">
-      {renderedList}
-    </div>
+    <ul className="clock-list">
+      {renderList}
+    </ul>
   )
 };
 

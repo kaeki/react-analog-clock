@@ -3,19 +3,26 @@ import './AnalogClock.scss';
 
 const DEFAULT_BACKGROUND = 'react.svg';
 
+const getRefDate = (timezone) => {
+  if (!timezone) return new Date();
+  return new Date(new Date().toLocaleString("en-US", {timeZone: timezone}));
+}
+
 const AnalogClock = (props) => {
   const background = props.background ? props.background : DEFAULT_BACKGROUND;
 
-  const refDate = new Date();
+  const refDate = getRefDate(props.timezone);
   const [ hours, setHours ] = useState(refDate.getHours());
   const [ minutes, setMinutes ] = useState(refDate.getMinutes());
   const [ seconds, setSeconds ] = useState(refDate.getSeconds());
+  const [ label, setLabel ] = useState(refDate.toLocaleTimeString('en-US'));
 
   const tick = () => {
-    const newRefDate = new Date();
+    const newRefDate = getRefDate(props.timezone);
     setHours(newRefDate.getHours());
     setMinutes(newRefDate.getMinutes());
     setSeconds(newRefDate.getSeconds());
+    setLabel(newRefDate.toLocaleTimeString('en-US'))
   };
 
   useEffect(() => {
@@ -39,10 +46,10 @@ const AnalogClock = (props) => {
   }
 
   return (
-    <div id={props.id} className="clock" style={{ backgroundImage: `url(${background})` }}>
-      <span className="clock__hours" style={ getHandStyle(hours, true) }/>
-      <span className="clock__minutes" style={ getHandStyle(minutes) }/>
-      <span className="clock__seconds" style={ getHandStyle(seconds) }/>
+    <div id={props.id} aria-label={label} className="analog-clock" style={{ backgroundImage: `url(${background})` }}>
+      <span className="analog-clock__hours" style={ getHandStyle(hours, true) }/>
+      <span className="analog-clock__minutes" style={ getHandStyle(minutes) }/>
+      <span className="analog-clock__seconds" style={ getHandStyle(seconds) }/>
     </div>
   )
 }
